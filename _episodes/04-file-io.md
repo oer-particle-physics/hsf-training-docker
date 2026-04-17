@@ -205,7 +205,7 @@ podman machine start
 
 Note that `podman machine init -v /private/tmp/data:/data` alone would override the default `/Users:/Users` mounting done by `podman machine init`. Adding the `-v /Users:/Users` flag ensures that these paths remains mounted.
 
-You can check that this directory is mounted to the VM by connecting to the VM and looking for it under `/data`
+You can check that this directory is mounted properly by connecting to the VM and looking for it under `/data`
 ~~~bash
 # host
 podman machine ssh
@@ -232,7 +232,7 @@ podman run --rm -it -v /data:/data almalinux:9
 ~~~
 {: .source}
 
-Now, you can check that the file was properly mounted in the container.
+You can check that the file was properly mounted in the container with
 ~~~bash
 # container
 ls /data
