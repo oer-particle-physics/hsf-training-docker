@@ -246,7 +246,7 @@ datum
 
 
 <figure>
-<img src="../fig/macos_volume_mounting.svg" alt="Volume mounting on MacOS diagram" width=200 />
+<img src="../fig/macos_volume_mounting.svg" alt="Volume mounting on MacOS diagram" width=800px />
   <figcaption>
     <i>Volume mounting from host to VM to container</i>
   </figcaption>
