@@ -168,8 +168,8 @@ even just having a specific version of software perform a task (e.g., using Pyth
     [TeX Live][Tex-Live-image] when you aren't ready to update your system release).
     
     
-# (Optional) Volume mounting on MacOS
-As previously mentioned, Podman on MacOS will create a virtual machine to run containers in.
+# (Optional) Volume mounting on macOS
+As previously mentioned, Podman on macOS will create a virtual machine to run containers in.
 
 When you run a command like
 ~~~bash
@@ -177,15 +177,15 @@ podman run --rm -it -v $PWD:/data almalinux:9
 ~~~
 {: .source}
 
-the environment variable `$PWD` will be expanded on the MacOS machine (the host), but the volume mounting will be performed between the virtual machine (VM) and the podman container.
+the environment variable `$PWD` will be expanded on the macOS machine (the host), but the volume mounting will be performed between the virtual machine (VM) and the podman container.
 This means that the path `$PWD` must already be mounted between the host and the VM for the `podman run` command to be able to link the path `$PWD` from the VM to the container.
 
 Podman automatically mounts the host's `/Users` to the VM's `/Users`.
 So, as long as the `$PWD` path is a sub-path of the host's `/Users`, is will already be mounted on the VM, and can be then mounted to the container as shown above with the `podman run` command.
 
 
-If you want to mount a path on your host MacOS machine not under `/Users`, you will first have to manually mount that path to the VM.
-For example, let's create a file at `/private/tmp/data/datum` (`/private/tmp` is the the path that `/tmp` links to on MacOS).
+If you want to mount a path on your host macOS machine not under `/Users`, you will first have to manually mount that path to the VM.
+For example, let's create a file at `/private/tmp/data/datum` (`/private/tmp` is the the path that `/tmp` links to on macOS).
 ~~~bash
 # host
 mkdir /private/tmp/data
@@ -246,7 +246,7 @@ datum
 
 
 <figure>
-<img src="../fig/macos_volume_mounting.svg" alt="Volume mounting on MacOS diagram" width=800px />
+<img src="../fig/macos_volume_mounting.svg" alt="Volume mounting on macOS diagram" width=800px />
   <figcaption>
     <i>Volume mounting from host to VM to container</i>
   </figcaption>
