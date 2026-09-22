@@ -1,0 +1,99 @@
++++
+aliases = ['/01-introduction/index.html']
+exercises = 5
+keypoints = ['Introduces Docker &mdash; a popular tool for software containerization.', 'Introduces Podman &mdash; an open-source alternative with several advantages.', 'Podman is a drop-in replacement for Docker. Replace `podman` by `docker` in the commands and you are good to go.']
+objectives = ['Learn the basic concepts on containerization.', 'Understand how a container helps with analysis reproducibility.']
+questions = ['What are containers?', 'What is Docker and Podman? What are the differences?']
+teaching = 5
+title = 'Introduction'
+weight = 10
++++
+{{< youtube UM31JIcJ3gk >}}
+
+## What is a Container?
+
+Have you ever:
+* Taken a piece of software from one computer to another and found that it doesn't work?
+* Had to install a bunch of dependencies to run a piece of software written by a colleague?
+* What about saying "it works on my machine" when someone else is having trouble running your code?
+
+We often experience it, and it's a common problem in software development and data analysis.
+The industry has been working on solutions to these problems for a long time,
+and containers are one of the most popular solutions.
+
+Containers are a way to package software that allows you to run an application and its dependencies in a single,
+isolated unit called a container.
+
+Importantly, containers share the host machine's OS system kernel and so don't require an
+OS per application.
+As discrete processes, containers take up only as much memory as necessary, making them
+very lightweight and fast to spin up to run:
+
+<figure>
+{{< lesson/image src="/fig/DockerVM.png" alt="Container-based architecture vs virtual machines" style="width:800px" >}}
+  <figcaption>
+    <i>Container-based architecture vs virtual machines</i>
+  </figcaption>
+</figure>
+
+{{< callout type="note" title="Containers on Windows and macOS" >}}
+Running containers in systems other than Linux, like macOS and Windows, require a virtual machine on the background to emulate the Linux kernel.
+Still, the containers are very lightweight and faster to spin up than to deploy one virtual machine for each application.
+
+Most containerization tools provide a seamless experience for the user, abstracting the virtual machine and making it transparent to the user.
+Just be aware that there is an additional layer between the containers and the host machine.
+{{< /callout >}}
+
+## Docker
+
+{{< lesson/image src="/fig/Docker_logo.png" alt="Docker logo" width="200" >}}
+
+Docker is perhaps the most popular containerization tool these days, particularly in industry.
+It is a platform for developing, shipping, and running applications in containers.
+In addition, Docker provides a public registry for sharing and
+collaborating on container images called [Docker Hub][docker-hub].
+
+The [official Docker documentation and tutorial][docker-tutorial] can be found on the
+Docker website.
+It is quite thorough and useful, and an excellent guide that should be routinely visited when working with Docker.
+A note up front, Docker has very similar syntax to Git and Linux, so if you are familiar
+with the command line tools for them, then most of Docker should seem somewhat natural
+(though you should still read the docs!).
+
+
+It is still important to know what Docker _is_ and what the components of it _are_.
+Docker images are executables that bundle together all necessary components for an
+application or an environment.
+[Docker containers][docker-containers] are the runtime instances of images &mdash; they
+are images with a state.
+
+Docker is the most popular containerization tool these days, but it's not the only one.
+There are other kids on the block that are in use and gaining popularity, such as Podman.
+
+## Why Podman?
+
+{{< lesson/image src="/fig/podman_logo.svg" alt="Podman logo" width="400" >}}
+
+Podman is an open-source alternative to Docker with several advantages.
+For example, Podman is able to run containers as a non-root user out of the box, a big security advantage over Docker.
+The reason is Podman uses a [serverless architecture](https://www.redhat.com/en/blog/painless-services-implementing-serverless-rootless-podman-and-systemd),
+which means that it doesn't require a [daemon](https://en.wikipedia.org/wiki/Daemon_(computing)) running as superuser
+to execute containers, as [Docker does](https://docs.docker.com/get-started/overview/#docker-architecture).
+
+In addition, Docker Desktop has [licensing restrictions](https://www.docker.com/pricing/) that may prevent you
+from using it in some institutions. If that is your case, Podman is an excellent alternative.
+
+Podman is a drop-in replacement for Docker, so you can use the same commands and workflows you are used to with Docker.
+Across the tutorial, we will use Podman as the containerization tool, but
+**if you are interested in using Docker instead, just replace `podman` by `docker` in the commands and you should be good to go**.
+
+
+{{< callout type="note" title="Apptainer" >}}
+Apptainer (formerly known as Singularity) is another containerization technology. It is widely used in HPC, and it is gaining rapid adoption in High Energy and Nuclear Physics, so you may need to familiarize yourself with it at some point.
+
+To learn more about Apptainer, see the [HSF Training Module "Introduction to Apptainer/Singularity"](https://github.com/hsf-training/hsf-training-singularity-webpage), which also includes [more details about the difference between Apptainer and Docker](https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html).
+{{< /callout >}}
+
+[docker-tutorial]: https://docs.docker.com/get-started
+[docker-containers]: https://www.docker.com/resources/what-container
+[docker-hub]: https://hub.docker.com

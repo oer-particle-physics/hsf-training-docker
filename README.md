@@ -1,23 +1,48 @@
 # Introduction to Docker and Podman
 [![HSF Training Center](https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4)](https://hepsoftwarefoundation.org/training/curriculum.html)
-[![pages-build-deployment](https://github.com/hsf-training/hsf-training-docker/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-docker/actions/workflows/pages/pages-build-deployment)
+[![Deploy lesson](https://github.com/oer-particle-physics/hsf-training-docker/actions/workflows/pages.yml/badge.svg)](https://github.com/oer-particle-physics/hsf-training-docker/actions/workflows/pages.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22016838.svg)](https://doi.org/10.5281/zenodo.22016838)
 
-This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
+This repository builds the lesson website with [Hugo](https://gohugo.io/) and [hugo-styles](https://github.com/oer-particle-physics/hugo-styles).
 
 > **Note**
-> Click [here](https://hsf-training.github.io/hsf-training-docker/) for the training website!
+> Click [here](https://oer-particle-physics.github.io/hsf-training-docker/) for the training website!
 
 This learning module introduces containers and their role in reproducible research. Participants will learn how to build, run, and share containers using tools like Docker and Podman.
+
+## Preview and build
+
+Install Hugo Extended 0.164.0 or newer and the Go version specified in `go.mod`.
+Run `hugo server` to preview the lesson locally, or build the deployable site with:
+
+```bash
+python3 scripts/build-versioned-site.py --use-current-checkout
+```
+
+The output is written to `public/`. The `--use-current-checkout` flag includes
+uncommitted changes when reviewing a pull request.
+
+## GitHub Pages migration
+
+When the Hugo migration is ready to merge, change **Settings → Pages → Build and
+deployment → Source** from **Deploy from a branch** to **GitHub Actions**.
+This repository setting must be changed separately from the source files.
+Then merge into `gh-pages`; the **Deploy lesson** workflow builds and deploys the
+site. Pull requests run the build and link checks without deploying.
+
+After deployment, check an old episode URL such as
+`/hsf-training-docker/01-introduction/index.html` and `/hsf-training-docker/setup.html`
+to confirm that they redirect to the new pages.
 
 ## Contributing
 
 We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
 questions, concerns, or experience any difficulties along the way.
 
-We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
-the [more detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even
-how to write new episodes.
+We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md)
+and the [hugo-styles documentation](https://oer-particle-physics.github.io/hugo-styles/docs/)
+for formatting and writing new episodes. See the preview instructions above to
+render the lesson locally.
 
 Please see the current list of [issues][github-issues] for ideas for contributing to this
 repository. For making your contribution, we use the GitHub flow, which is
@@ -33,7 +58,7 @@ Current maintainers of this lesson are
 
 ## Authors
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
+A list of the lesson authors can be found in [CITATION.cff](CITATION.cff)
 
 ## Contributors
 
