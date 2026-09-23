@@ -107,5 +107,4 @@ The materials developed here are published under open licenses (CC BY 4.0) and c
 
 See the Zenodo record [here](https://doi.org/10.5281/zenodo.22016838).
 
-[lesson-example]: https://carpentries.github.io/lesson-example
 [github-issues]: https://github.com/matthewfeickert/intro-to-docker/issues
